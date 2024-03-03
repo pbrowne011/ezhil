@@ -32,5 +32,16 @@
 		</div>
 	</div>
 	{{ partial "footer.html" . }}
+	
+	<!-- Custom JavaScript for adjusting footnote links -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              document.querySelectorAll('a[href^="#fnref:"], a[href^="#fn:"]').forEach(function(link) {
+                  var href = link.getAttribute('href');
+                  var newHref = window.location.pathname + href;
+                  link.setAttribute('href', newHref);
+              });
+          });
+        </script>
 </body>
 </html>

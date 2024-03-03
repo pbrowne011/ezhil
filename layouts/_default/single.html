@@ -7,7 +7,10 @@
 
 		<div class="post-header">
 			<h1 class="title">{{ .Title }}</h1>
-			<div class="meta">Posted at &mdash; {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+			<div class="meta">
+                          {{ if not (or (eq .RelPermalink "/about") (eq .Title "About")) }} {{ dateFormat "Jan 2, 2006" .Date }} {{ end }}
+                          {{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+			</div>
 		</div>
 
 		<div class="markdown">
@@ -51,5 +54,16 @@
 		{{- end -}}
 	</div>
 	{{ partial "footer.html" . }}
+
+	<!-- js for adjusting footnote links -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              document.querySelectorAll('a[href^="#fnref:"], a[href^="#fn:"]').forEach(function(link) {
+                  var href = link.getAttribute('href');
+                  var newHref = window.location.pathname + href;
+                  link.setAttribute('href', newHref);
+              });
+          });
+        </script>
 </body>
 </html>
