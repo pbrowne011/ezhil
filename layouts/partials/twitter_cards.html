@@ -1,0 +1,6 @@
+<!-- custom Twitter cards to include images -->
+<meta name="twitter:card" content="{{ if .Params.twimg }}summary_img{{ else
+                                   }}summary{{ end }}"/>
+<meta name="twitter:title" content="{{ .Title }}"/>
+<meta name="twitter:description" content="{{ .Description }}"/>
+{{ with .Params.twimg }}{{ if hasPrefix . "http" }}<meta name="twitter:image" content="{{ . }}"/>{{else }}<meta name="twitter:image" content="{{ . | absURL }}"/>{{ end }}{{ end }}
