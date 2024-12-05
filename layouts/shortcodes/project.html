@@ -1,0 +1,33 @@
+{{ $title := .Get "title" }}
+{{ $image := .Get "image" }}
+{{ $repo := .Get "repo" }}
+{{ $tagString := .Get "tags" }}
+
+<div class="project">
+  <div class="project-image">
+    {{ if $image }}
+      <img src="{{ $image }}" alt="{{ $title }}">
+    {{ else }}
+      <div class="placeholder-img"></div>
+    {{ end }}
+  </div>
+  <div class="project-content">
+    <h3 class="project-title">
+      {{ $title }}
+      {{ if $repo }}
+        <a href="{{ $repo }}" class="repo-link" target="_blank" rel="noopener">↗</a>
+      {{ end }}
+    </h3>
+    <p class="project-description">
+      {{ .Inner | markdownify }}
+    </p>
+    {{ with $tagString }}
+      <div class="project-tags">
+        {{ $tags := split . "," }}
+        {{ range $tags }}
+          <span class="tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>
