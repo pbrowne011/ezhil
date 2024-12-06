@@ -6,7 +6,9 @@
 <div class="project">
   <div class="project-image">
     {{ if $image }}
-      <img src="{{ $image }}" alt="{{ $title }}">
+      <a href="{{ $image }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ $image }}" alt="{{ $title }}">
+      </a>
     {{ else }}
       <div class="placeholder-img"></div>
     {{ end }}
@@ -15,7 +17,9 @@
     <h3 class="project-title">
       {{ $title }}
       {{ if $repo }}
-        <a href="{{ $repo }}" class="repo-link" target="_blank" rel="noopener">↗</a>
+      <a href="{{ $repo }}" class="repo-link" target="_blank" rel="noopener">
+        <i data-feather="link" width="16" height="16"></i>
+      </a>
       {{ end }}
     </h3>
     <p class="project-description">
