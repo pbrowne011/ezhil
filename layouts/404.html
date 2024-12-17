@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  {{ partial "header.html" . }}
+  <body>
+    <div class="container wrapper">
+      {{ partial "head.html" . }}
+      {{ with .Content }}{{ . }}{{ end }}
+      <h1>Page not found</h1>
+      <p>The page you're looking for is not available on this server.<p>
+        {{ partial "footer.html" . }}
+    </div>
+  </body>
+</html>
