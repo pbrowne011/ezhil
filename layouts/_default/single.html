@@ -7,6 +7,13 @@
 
 		<div class="post-header">
 			<h1 class="title">{{ .Title }}</h1>
+                        <h3 class="description">
+      			  {{ if isset .Params "description" }}
+			  {{ .Description }}
+			  {{ else }}
+			  {{ .Summary }}&hellip;
+			  {{ end }}
+                        </h3>
 			<div class="meta">
                           {{ if not (or (eq .Slug "about") (eq .Slug "projects")) }}
                             {{ dateFormat "Jan 2, 2006" .Date }}
