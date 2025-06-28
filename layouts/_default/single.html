@@ -8,9 +8,9 @@
 		<div class="post-header">
 			<h1 class="title">{{ .Title }}</h1>
                         <h3 class="description">
-      			  {{ if isset .Params "description" }}
+      			  {{ if and (isset .Params "description") (not (isset .Params "nodescription")) }}
 			  {{ .Description }}
-			  {{ else }}
+			  {{ else  if not (isset .Params "nodescription") }}
 			  {{ .Summary }}&hellip;
 			  {{ end }}
                         </h3>
