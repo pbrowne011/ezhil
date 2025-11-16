@@ -15,7 +15,8 @@
 			  {{ end }}
                         </h3>
 			<div class="meta">
-                          {{ if not (or (eq .Slug "about") (eq .Slug "projects")) }}
+                          {{ $excluded := slice "about" "projects" "belichick" }}
+                          {{ if not (in $excluded .Slug) }}
                             {{ dateFormat "Jan 2, 2006" .Date }}
                           {{ end }}
                           {{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
